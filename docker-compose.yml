@@ -1,0 +1,57 @@
+version: '3.4'
+services:
+  product-db:
+   image: postgres
+   container_name: product-db
+   restart: always
+   environment:
+     POSTGRES_USER: product
+     POSTGRES_PASSWORD: product
+     POSTGRES_DB: product
+   ports:
+     - 5432:5432
+   networks:
+     - microservices
+
+  auth-db:
+   image: postgres
+   container_name: auth-db
+   restart: always
+   environment:
+     POSTGRES_USER: auth
+     POSTGRES_PASSWORD: auth
+     POSTGRES_DB: auth
+   ports:
+     - 5433:5433
+   networks:
+     - microservices
+  
+  sales-db:
+   image: tutum/mongodb
+   container_name: sales-db
+   restart: always
+   environment:
+     MONDODB_USER: sales
+     MONDODB_PASS: sales
+     MONDODB_DATABASE: sales
+   ports:
+     - 27017:27017
+     - 28017:28017
+   networks:
+     - microservices
+
+  rabbitmq:
+   image: rabbitmq:3-management
+   container_name: rabbitmq
+   restart: always
+   ports:
+     - 5672:5672
+     - 15672:15672
+   networks:
+     - microservices
+
+networks:
+  microservices:
+    driver: bridge
+  
+

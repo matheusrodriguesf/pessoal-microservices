@@ -3,7 +3,6 @@ services:
   product-db:
    image: postgres
    container_name: product-db
-   restart: always
    environment:
      POSTGRES_USER: product
      POSTGRES_PASSWORD: product
@@ -16,7 +15,6 @@ services:
   auth-db:
    image: postgres
    container_name: auth-db
-   restart: always
    environment:
      POSTGRES_USER: auth
      POSTGRES_PASSWORD: auth
@@ -29,7 +27,6 @@ services:
   sales-db:
    image: tutum/mongodb
    container_name: sales-db
-   restart: always
    environment:
      MONDODB_USER: sales
      MONDODB_PASS: sales
@@ -43,7 +40,6 @@ services:
   rabbitmq:
    image: rabbitmq:3-management
    container_name: rabbitmq
-   restart: always
    ports:
      - 5672:5672
      - 15672:15672

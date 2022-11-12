@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class SupplierFormDTO implements Serializable {
+public class SupplierForm implements Serializable {
 
     private static final long serialVersionUID = 1L;
     private String name;

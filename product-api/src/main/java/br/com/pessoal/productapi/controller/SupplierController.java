@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.pessoal.productapi.dto.SupplierFormDTO;
-import br.com.pessoal.productapi.dto.SupplierResponseDto;
+import br.com.pessoal.productapi.dto.SupplierForm;
+import br.com.pessoal.productapi.dto.SupplierResponse;
 import br.com.pessoal.productapi.service.SupplierService;
 import lombok.RequiredArgsConstructor;
 
@@ -24,23 +24,23 @@ public class SupplierController {
     private final SupplierService supplierService;
 
     @PostMapping
-    public ResponseEntity<SupplierResponseDto> create(@RequestBody SupplierFormDTO supplierForm) {
+    public ResponseEntity<SupplierResponse> create(@RequestBody SupplierForm supplierForm) {
         var supplier = supplierService.create(supplierForm);
         return ResponseEntity.ok(supplier);
     }
 
     @GetMapping
-    public List<SupplierResponseDto> all() {
+    public List<SupplierResponse> all() {
         return supplierService.all();
     }
 
     @GetMapping("/{id}")
-    public SupplierResponseDto findById(@PathVariable Integer id) {
+    public SupplierResponse findById(@PathVariable Integer id) {
         return supplierService.findById(id);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<SupplierResponseDto> update(@PathVariable Integer id, @RequestBody SupplierFormDTO supplierForm) {
+    public ResponseEntity<SupplierResponse> update(@PathVariable Integer id, @RequestBody SupplierForm supplierForm) {
         var supplier = supplierService.update(id, supplierForm);
         return ResponseEntity.ok(supplier);
     }

@@ -6,15 +6,15 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
-import br.com.pessoal.productapi.dto.SupplierResponseDto;
+import br.com.pessoal.productapi.dto.SupplierResponse;
 import br.com.pessoal.productapi.entity.Supplier;
 
 public interface SupplierRepository extends JpaRepository<Supplier, Integer> {
 
     @Query("""
-            select new br.com.pessoal.productapi.dto.SupplierResponseDto(s.id, s.name) from Supplier s
+            select new br.com.pessoal.productapi.dto.SupplierResponse(s.id, s.name) from Supplier s
                 """)
-    List<SupplierResponseDto> all();
+    List<SupplierResponse> all();
 
     Supplier getById(@Param("id") Integer id);
 

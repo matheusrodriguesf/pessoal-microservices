@@ -11,7 +11,7 @@ import br.com.pessoal.productapi.entity.Product;
 import br.com.pessoal.productapi.entity.Supplier;
 import br.com.pessoal.productapi.repository.ProductRepository;
 import lombok.RequiredArgsConstructor;
-import lombok.var;
+
 
 @Service
 @RequiredArgsConstructor

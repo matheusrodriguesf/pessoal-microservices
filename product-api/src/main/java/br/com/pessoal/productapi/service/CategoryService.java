@@ -10,7 +10,6 @@ import br.com.pessoal.productapi.dto.CategoryResponse;
 import br.com.pessoal.productapi.entity.Category;
 import br.com.pessoal.productapi.repository.CategoryRepository;
 import lombok.RequiredArgsConstructor;
-import lombok.var;
 
 @Service
 @RequiredArgsConstructor
@@ -19,8 +18,8 @@ public class CategoryService {
 
     public CategoryResponse create(CategoryForm categoryForm) {
         var category = Category.builder()
-                .name(categoryForm.getName())
-                .description(categoryForm.getDescription())
+                .name(categoryForm.name())
+                .description(categoryForm.description())
                 .createdAt(LocalDateTime.now())
                 .build();
         category = categoryRepository.save(category);
@@ -38,8 +37,8 @@ public class CategoryService {
 
     public CategoryResponse update(Integer id, CategoryForm categoryForm) {
         var category = categoryRepository.findById(id).orElseThrow();
-        category.setName(categoryForm.getName());
-        category.setDescription(categoryForm.getDescription());
+        category.setName(categoryForm.name());
+        category.setDescription(categoryForm.description());
         category.setUpdatedAt(LocalDateTime.now());
         category = categoryRepository.save(category);
         return new CategoryResponse(category.getId(),

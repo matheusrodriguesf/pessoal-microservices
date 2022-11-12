@@ -20,7 +20,7 @@ public class SupplierService {
 
     @Transactional(propagation = Propagation.REQUIRED)
     public SupplierResponse create(SupplierForm supplierForm) {
-        var supplier = Supplier.builder().name(supplierForm.getName()).build();
+        var supplier = Supplier.builder().name(supplierForm.name()).build();
         supplier = supplierRepository.save(supplier);
         return new SupplierResponse(supplier.getId(), supplier.getName());
     }
@@ -38,7 +38,7 @@ public class SupplierService {
     }
 
     public SupplierResponse update(Integer id, SupplierForm supplierForm) {
-        var supplier = Supplier.builder().id(id).name(supplierForm.getName()).build();
+        var supplier = Supplier.builder().id(id).name(supplierForm.name()).build();
         supplier = supplierRepository.save(supplier);
         return new SupplierResponse(supplier.getId(), supplier.getName());
     }

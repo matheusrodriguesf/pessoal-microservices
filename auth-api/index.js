@@ -1,8 +1,11 @@
 import express from 'express';
+import seed from './seed/data.js';
 const app = express();
 const env = process.env;
 const PORT = env.PORT || 8080;
 
+
+seed();
 
 app.get('/status', (req, res) => {
     return res.json(

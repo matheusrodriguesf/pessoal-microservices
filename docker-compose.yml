@@ -1,4 +1,4 @@
-version: '3.4'
+version: '3'
 services:
   product-db:
    image: postgres
@@ -45,6 +45,45 @@ services:
      - 15672:15672
    networks:
      - microservices
+
+  auth-api:
+   image: matheusrfa/auth-api
+   container_name: auth-api
+   build: ./auth-api
+   environment:
+     PORT: 8080 
+   ports:
+     - 8080:8080
+   depends_on:
+     - auth-db
+   networks:
+     - microservices
+  
+  product-api:
+   image: matheusrfa/product-api
+   container_name: product-api
+   build: ./product-api
+   environment:
+     PORT: 8081
+   ports:
+     - 8081:8081
+   depends_on:
+     - product-db
+   networks:
+     - microservices
+
+  sales-api:
+    image: matheusrfa/sales-api
+    container_name: sales-api
+    build: ./sales-api
+    environment:
+      PORT: 8082
+    ports:
+      - 8082:8082
+    depends_on:
+      - sales-db
+    networks:
+      - microservices   
 
 networks:
   microservices:

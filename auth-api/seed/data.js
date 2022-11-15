@@ -1,6 +1,6 @@
 import bcrypt from 'bcrypt';
 import { faker } from '@faker-js/faker';
-import User from '../model/User.js';
+import User from '../model/user.js';
 
 
 export default async function seed() {

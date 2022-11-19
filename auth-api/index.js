@@ -1,6 +1,7 @@
 import express from 'express';
 import seed from './seed/data.js';
 import userRoutes from './routes/user-routes.js';
+import auth from './config/auth.js';
 
 const app = express();
 const env = process.env;
@@ -9,8 +10,8 @@ const PORT = env.PORT || 8080;
 seed();
 
 app.use(express.json());
-
 app.use(userRoutes);
+app.use(auth);
 
 app.get('/status', (req, res) => {
     return res.json(

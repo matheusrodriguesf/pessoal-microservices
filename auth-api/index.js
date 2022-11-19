@@ -1,7 +1,6 @@
 import express from 'express';
 import seed from './seed/data.js';
 import userRoutes from './routes/user-routes.js';
-import auth from './config/auth.js';
 
 const app = express();
 const env = process.env;
@@ -11,7 +10,7 @@ seed();
 
 app.use(express.json());
 app.use(userRoutes);
-app.use(auth);
+
 
 app.get('/status', (req, res) => {
     return res.json(

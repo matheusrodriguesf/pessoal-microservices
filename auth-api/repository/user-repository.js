@@ -1,6 +1,6 @@
-import User from "../model/user";
+import User from "../model/user.js";
 
-export default class UserRepository {
+class UserRepository {
 
     /**
      * Retorna um usuário pelo email
@@ -12,7 +12,8 @@ export default class UserRepository {
         try {
             return await User.findOne({ where: { email } });
         } catch (error) {
-            throw error;
+            console.error(error.message);
+            throw new Error(error.message);
         }
     }
 
@@ -27,7 +28,10 @@ export default class UserRepository {
         try {
             return await User.findByPk(id);
         } catch (error) {
-            throw error;
+            console.error(error.message);
+            throw new Error(error.message);
         }
     }
 }
+
+export default new UserRepository();

@@ -1,6 +1,6 @@
 import { Sequelize } from "sequelize";
 const sequelize = new Sequelize("auth", "auth", "auth", {
-    host: "localhost",
+    host: "172.22.0.2",
     dialect: "postgres",
     quoteIdentifiers: false,
     define: {

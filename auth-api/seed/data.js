@@ -6,6 +6,12 @@ import User from '../model/user.js';
 export default async function seed() {
     try {
         await User.sync({ force: true });
+        await User.create({
+            name: 'Admin',
+            email: 'admin@email.com',
+            password: await bcrypt.hash('admin', 10),
+            createdAt: new Date(),
+        });
         for (let i = 0; i < 10; i++) {
             let user = await User.create({
                 name: faker.name.firstName(),
